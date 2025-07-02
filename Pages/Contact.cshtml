@@ -1,0 +1,96 @@
+﻿@page
+@model MRS.Pages.ContactModel
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+    var errorMessage = TempData["ErrorMessage"] as string;
+}
+
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-white">
+        <img src="images/background/subheader5.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Contáctanos</h1>
+                        <p>Seguridad. Ética. Compromiso.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    <section aria-label="section">
+        <div class="col-lg-8 offset-lg-2 mb-sm-30 text-center">
+            @if (!string.IsNullOrEmpty(successMessage))
+                        {
+                            <div class="alert alert-success">
+                                @successMessage
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger">
+                                @errorMessage
+                            </div>
+                        }
+        </div>
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <img src="images/misc/p2.jpg" alt="" class="img-fluid mb30">
+                    <h3>Querétaro Oficinas</h3>
+                    <address class="s1">
+                        <span><i class="id-color fa fa-map-marker fa-lg"></i>Dirección. Calle Francisco Javier Clavijero #13, Colonia Los Molinos 2da. Sección, Querétaro, Qro., C.P. 76150</span>
+                        <span><i class="id-color fa fa-phone fa-lg"></i>442 148 7777</span>
+                        <span><i class="id-color fa fa-envelope-o fa-lg"></i><a href="mailto:administracion@mrs-administracion.com">administracion@mrs-administracion.com</a></span>
+                    </address>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </section>
+    <section aria-label ="section" class="text-light" data-bgcolor="#111111">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 mb-sm-30 text-center">
+                    <a id="message-anchor"></a> <!-- Añadir este ancla aquí -->
+                    <h3>¿Tienes Alguna Pregunta o Duda?</h3>
+                    <form class="form-border" method="post" asp-page-handler="Send">
+                        
+                        <div class="field-set">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required />
+                        </div>
+                        <div class="field-set">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Correo" required />
+                        </div>
+                        <div class="field-set">
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Teléfono" required />
+                        </div>
+                        <div class="field-set">
+                            <textarea name="message" id="message" class="form-control" placeholder="Mensaje" required></textarea>
+                        </div>
+                        <div class="spacer-half"></div>
+                        <div id="submit">
+                            <button type="submit" class="btn btn-custom">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Verifica si hay un fragmento en la URL y desplázate suavemente a él
+        if (window.location.hash && window.location.hash === "#message-anchor") {
+            document.getElementById("message-anchor").scrollIntoView({ behavior: "smooth" });
+        }
+    });
+</script>

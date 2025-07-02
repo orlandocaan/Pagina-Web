@@ -1,0 +1,63 @@
+﻿@page
+@model MRS.Pages.ContacttModel
+@{
+     var successMessage = TempData["SuccessMessage"] as string;
+     var errorMessage = TempData["ErrorMessage"] as string;
+}
+
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-white">
+        <img src="images/background/subheader5.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Contáctanos</h1>
+                        <p>Reputation. Respect. Result.</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    <section aria-label="section" class="text-light" data-bgcolor="#111111">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 mb-sm-30 text-center">
+                    <h3>¿Tienes Alguna Pregunta o Duda?</h3>
+                    <form method="post" asp-page-handler="Send" class="form-border">
+                        <div class="field-set">
+                            <input type="text" name="ContactForm.Name" id="name" class="form-control" placeholder="Nombre" />
+                        </div>
+                        <div class="field-set">
+                            <input type="text" name="ContactForm.Email" id="email" class="form-control" placeholder="Correo" />
+                        </div>
+                        <div class="field-set">
+                            <input type="text" name="ContactForm.Phone" id="phone" class="form-control" placeholder="Teléfono" />
+                        </div>
+                        <div class="field-set">
+                            <textarea name="ContactForm.Message" id="message" class="form-control" placeholder="Mensaje"></textarea>
+                        </div>
+                        <div class="spacer-half"></div>
+                        <div id="submit">
+                            <input type="submit" id="send_message" value="Enviar" class="btn btn-custom" />
+                        </div>
+                        @if (!string.IsNullOrEmpty(successMessage))
+                        {
+                            <div id="mail_success" class="success">@successMessage</div>
+                        }
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div id="mail_fail" class="error">@errorMessage</div>
+                        }
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
